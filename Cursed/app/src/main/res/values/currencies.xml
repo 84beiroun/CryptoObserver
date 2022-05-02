@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cryptocurrencies">
+        <item>bitcoin</item>
+        <item>litecoin</item>
+        <item>dogecoin</item>
+        <item>monero</item>
+        <item>ethereum</item>
+        <item>tether</item>
+        <item>solana</item>
+        <item>cardano</item>
+        <item>avalanche</item>
+        <item>polkadot</item>
+        <item>terrausd</item>
+        <item>polygon</item>
+        <item>chainlink</item>
+        <item>vechain</item>
+        <item>filecoin</item>
+        <item>theta</item>
+        <item>fantom</item>
+        <item>klaytn</item>
+        <item>thorchain</item>
+        <item>tezos</item>
+        <item>frax</item>
+        <item>helium</item>
+        <item>pancakeswap</item>
+        <item>waves</item>
+        <item>aave</item>
+        <item>eos</item>
+        <item>zcash</item>
+        <item>defichain</item>
+    </string-array>
+</resources>

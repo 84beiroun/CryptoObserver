@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".currency_info"
+    >
+    <ProgressBar
+        android:id="@+id/progress_loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:orientation="vertical"
+            android:layout_marginLeft="10pt"
+            android:layout_marginRight="10pt">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:text="NaN"
+                   android:layout_weight="1"
+                   android:gravity="bottom"
+                   android:textAlignment="gravity"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   android:textColor="#000000"
+                   android:id="@+id/nameTV"
+                   />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:text="NaN"
+                   android:textColor="#000000"
+                   android:layout_weight="1"
+                 android:id="@+id/valueTV"
+                  android:textAlignment="textEnd"
+                   android:textSize="25sp"
+                   android:gravity="bottom"
+                   tools:ignore="RtlCompat" />
+
+           </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="NaN"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:id="@+id/symbolTV"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/mainLayout"
+            android:visibility="invisible">
+    <lecho.lib.hellocharts.view.LineChartView
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="150pt"
+        android:layout_weight="1"
+        android:layout_margin="2pt"/>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="25"
+      android:orientation="vertical"
+      android:layout_marginTop="10pt"
+      android:layout_marginLeft="10pt"
+      android:layout_marginRight="10pt"
+      android:layout_marginBottom="55pt">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:text="Currency change"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textAlignment="textEnd"
+        android:text="0.0"
+        android:id="@+id/changeTV"
+        android:layout_weight="1"
+        android:gravity="end" />
+
+</LinearLayout>
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1pt"
+          android:layout_marginBottom="3pt"
+          android:background="@color/colorPrimary"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Max"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textAlignment="textEnd"
+            android:textColor="#000000"
+            android:id="@+id/maxTV"
+            android:text="0.0"
+            android:layout_weight="1"
+            android:gravity="end" />
+
+    </LinearLayout>
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1pt"
+          android:layout_marginBottom="3pt"
+          android:background="@color/colorPrimary"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Min"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:id="@+id/minTV"
+            android:textAlignment="textEnd"
+            android:text="0.0"
+            android:layout_weight="1"
+            android:gravity="end" />
+    </LinearLayout>
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1pt"
+          android:layout_marginBottom="3pt"
+          android:background="@color/colorPrimary"/>
+
+  </LinearLayout>
+  </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
