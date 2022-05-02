@@ -1,1 +1,2 @@
-It's empty... for now...
+The project was first created as a course project for my higher education institution, but I decided to refine it later, worked on the design, added many more functions.
+As a result, a standard application was released, tests were developed for it and much more, in fact, the development was aimed at honing my own knowledge and skills.
