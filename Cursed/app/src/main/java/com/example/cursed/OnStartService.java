@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -24,8 +22,9 @@ import java.util.concurrent.TimeUnit;
 
 public class OnStartService extends Service implements AsyncResponse {
     private final int UPDATE_INTERVAL = 60 * 1000;
-    private Timer timer = new Timer();
+    private final Timer timer = new Timer();
     SharedPreferences sharedPref;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -45,19 +44,18 @@ public class OnStartService extends Service implements AsyncResponse {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         ScheduledExecutorService scheduler =
-                        Executors.newSingleThreadScheduledExecutor();
-                scheduler.scheduleAtFixedRate
-                        (new TimerTask(){
-                            public void run(){
-                                sharedPref = getApplicationContext().getSharedPreferences("currName", Context.MODE_PRIVATE);;
-                                NetworkTask nT = new NetworkTask();
-                                nT.fullUrl = sharedPref.getString("requestCursed",null);
-                                nT.delegate = OnStartService.this;
-                                nT.execute();
-                            }
+                Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate
+                (new TimerTask() {
+                    public void run() {
+                        sharedPref = getApplicationContext().getSharedPreferences("currName", Context.MODE_PRIVATE);
+                        NetworkTask nT = new NetworkTask();
+                        nT.fullUrl = sharedPref.getString("requestCursed", null);
+                        nT.delegate = OnStartService.this;
+                        nT.execute();
+                    }
 
-                        }, 0, 5, TimeUnit.SECONDS);
-
+                }, 0, 5, TimeUnit.SECONDS);
 
 
         return START_STICKY;
@@ -73,7 +71,7 @@ public class OnStartService extends Service implements AsyncResponse {
             mBuilder.setContentTitle("Info about Cryptocurrency:");
             mBuilder.setContentText(output);
             mBuilder.setPriority(Notification.PRIORITY_LOW);
-         NotificationManager nM = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationManager nM = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             String channelId = "id1";
             NotificationChannel channel = new NotificationChannel(
                     channelId,
@@ -81,10 +79,10 @@ public class OnStartService extends Service implements AsyncResponse {
                     NotificationManager.IMPORTANCE_LOW);
             nM.createNotificationChannel(channel);
             mBuilder.setChannelId(channelId);
-         nM.notify(0, mBuilder.build());
+            nM.notify(0, mBuilder.build());
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString("lastCurr", output);
             editor.apply();
-     }
+        }
     }
 }

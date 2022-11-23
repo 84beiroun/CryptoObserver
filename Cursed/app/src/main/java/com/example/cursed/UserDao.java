@@ -11,12 +11,16 @@ import java.util.List;
 public interface UserDao {
     @Query("SELECT * FROM user")
     List<User> getAll();
+
     @Query("SELECT * FROM user WHERE login LIKE :trylogin LIMIT 1")
     User findByName(String trylogin);
+
     @Query("SELECT EXISTS(SELECT 1 FROM user WHERE login LIKE :trylogin)")
     boolean checkExist(String trylogin);
+
     @Insert
     void insertAll(User users);
+
     @Delete
     void delete(User user);
 

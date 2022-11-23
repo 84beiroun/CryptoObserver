@@ -16,7 +16,7 @@ public class User {
 
     public User(String UserLogin, String UserPassword) {
         this.UserLogin = UserLogin;
-           this.UserPassword = UserPassword;
+        this.UserPassword = UserPassword;
     }
 
     @Override

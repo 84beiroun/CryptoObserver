@@ -18,13 +18,13 @@ public class BdValidTask extends AsyncTask<String, Void, String> {
         final UserDao userDao = bd.userDao();
         try {
             User user2 = userDao.findByName(user.UserLogin);
-                if (user2.UserPassword.equals(user.UserPassword))
-                validate = true;
-        }catch (NullPointerException e){
+            if (user2.UserPassword.equals(user.UserPassword)) validate = true;
+        } catch (NullPointerException e) {
             Log.d("tas", "null");
         }
         return null;
     }
+
     protected void onPostExecute(String result) {
         delegate.processFinish(validate);
     }

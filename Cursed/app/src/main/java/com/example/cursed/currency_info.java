@@ -3,11 +3,7 @@ package com.example.cursed;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,14 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import org.apache.commons.math3.util.Precision;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +47,7 @@ public class currency_info extends Fragment {
     Float min, max, change;
     LinearLayout mainLayout;
     ProgressBar progressBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -100,15 +95,14 @@ public class currency_info extends Fragment {
         super.onDestroy();
     }
 
-    public class loadData implements Runnable
-    {
+    public class loadData implements Runnable {
         @Override
         public void run() {
             Float currentValue = Float.valueOf(sharedPref.getString("currency_value", null));
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    valueTV.setText(String.valueOf(Precision.round(currentValue,3)));
+                    valueTV.setText(String.valueOf(Precision.round(currentValue, 3)));
                     nameTV.setText(sharedPref.getString("currency_name", null));
                     symbolTV.setText(sharedPref.getString("currency_symbol", null));
                     if (values.size() >= 2) {
@@ -131,14 +125,14 @@ public class currency_info extends Fragment {
             if (!values.contains(currentValue)) {
                 values.add(currentValue);
                 date.add(new SimpleDateFormat("HH:mm:ss").format(new Date()));
-                roundedValues.add(String.valueOf(Precision.round(currentValue,3)));
+                roundedValues.add(String.valueOf(Precision.round(currentValue, 3)));
                 List<PointValue> chartValuesY = new ArrayList<>();
                 List<AxisValue> axisValuesForX = new ArrayList<>();
                 List<AxisValue> axisValuesForY = new ArrayList<>();
                 for (int i = 0; i < values.size(); i++) {
                     chartValuesY.add(new PointValue(i, values.get(i)));
-                   axisValuesForX.add(new AxisValue(i).setLabel(date.get(i)));
-                   axisValuesForY.add(new AxisValue(values.get(i)).setLabel(roundedValues.get(i)));
+                    axisValuesForX.add(new AxisValue(i).setLabel(date.get(i)));
+                    axisValuesForY.add(new AxisValue(values.get(i)).setLabel(roundedValues.get(i)));
                 }
                 Axis axeX = new Axis(axisValuesForX);
                 Axis axeY = new Axis(axisValuesForY);
